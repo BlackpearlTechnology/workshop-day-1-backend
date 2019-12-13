@@ -1,7 +1,7 @@
 const express = require('express')
 require('./db/mongoose')
 const cors = require('cors')
-const todosRoutes = require('./api/routes/todos.routes')
+const videosRoutes = require('./api/routes/videos.routes')
 const ErrorCodes = require('./utils/ErrorCodes')
 const ApplicationError = require('./utils/ApplicationError')
 
@@ -20,9 +20,9 @@ app.use((err, req, res, next) => {
 })
 
 // ? Routes
-app.use('/api/todos', todosRoutes)
+app.use('/api/videos', videosRoutes)
 
-// ? Catch unknow URIs
+// ? Catch unknow nURIs
 app.use((req, res, next) => {
   return next(new ApplicationError([{ msg: 'Invalid endpoint' }],
     404, ErrorCodes.INVALID_ENDPOINT_ERROR))

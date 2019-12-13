@@ -1,18 +1,23 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const todoSchema = new Schema({
+const videoSchema = new Schema({
   title: {
     type: String,
     required: true,
     maxlength: 255
   },
-  content: {
+  description: {
+    type: String,
+    required: true,
+    maxlength: 255
+  },
+  uploader: {
     type: String,
     required: true,
     maxlength: 255
   }
 }, { timestamps: true })
 
-const Todo = new mongoose.model('Todo', todoSchema)
-module.exports = Todo
+const Video = new mongoose.model('Video', videoSchema)
+module.exports = Video

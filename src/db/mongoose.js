@@ -8,5 +8,6 @@ mongoose.connect(DATABASE_URL, {
   useCreateIndex: true,
   useUnifiedTopology: true
 })
-  .then(() => console.log('MongoDB running'))
+  // .then(() => console.log('MongoDB running'))
+  .then(() => { })
   .catch(error => console.error(error))

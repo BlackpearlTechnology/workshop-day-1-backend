@@ -1,4 +1,4 @@
-const Todo = require('../models/Todo')
+const Video = require('../models/Video')
 const { validationResult } = require('express-validator')
 const ApplicationError = require('../../utils/ApplicationError')
 const ErrorCodes = require('../../utils/ErrorCodes')
@@ -6,8 +6,8 @@ const ErrorCodes = require('../../utils/ErrorCodes')
 // * FETCH
 module.exports.fetch = async (req, res, next) => {
   try {
-    const todos = await Todo.find()
-    res.status(200).send({ todos })
+    const videos = await Video.find()
+    res.status(200).send({ videos })
   } catch (err) {
     next(new ApplicationError([{ msg: err.message }]))
   }
@@ -16,17 +16,18 @@ module.exports.fetch = async (req, res, next) => {
 // * CREATE
 module.exports.create = async (req, res, next) => {
   const title = req.body.title
-  const content = req.body.content
+  const description = req.body.description
+  const uploader = req.body.uploader
 
   // ? Validate
   const errors = validationResult(req)
   if (!errors.isEmpty()) return next(new ApplicationError(errors.array(), 422, ErrorCodes.INVALID_INPUT_ERROR))
 
-  const newTodo = new Todo({ title, content })
+  const newVideo = new Video({ title, description, uploader })
 
   try {
-    const savedTodo = await newTodo.save()
-    res.status(201).send({ todo: savedTodo })
+    const savedVideo = await newVideo.save()
+    res.status(201).send({ video: savedVideo })
   } catch (err) {
     next(new ApplicationError([{ msg: err.message }]))
   }
