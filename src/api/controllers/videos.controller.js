@@ -32,5 +32,3 @@ module.exports.create = async (req, res, next) => {
     next(new ApplicationError([{ msg: err.message }]))
   }
 }
-
-
