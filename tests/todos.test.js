@@ -16,7 +16,7 @@ beforeAll(async () => {
 })
 
 // * GET ==> /api/videos - Fetch all videos
-test('Should fetch all todos', async () => {
+test('Should fetch all videos', async () => {
   await request(app)
     .get('/api/videos')
     .expect(200)
