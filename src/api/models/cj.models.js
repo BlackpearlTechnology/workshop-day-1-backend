@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const AutomationSchema = new Schema({
-  priority: {
+  deviceid: {
     type: String,
     required: true,
     maxlength: 20
   },
-  title: {
+  imei: {
     type: String,
     required: true,
     maxlength: 200
   },
-  description: {
+  status: {
     type: String,
     required: true,
     maxlength: 300
