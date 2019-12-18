@@ -4,6 +4,7 @@ const cors = require('cors')
 const todosRoutes = require('./api/routes/todos.routes')
 const ErrorCodes = require('./utils/ErrorCodes')
 const ApplicationError = require('./utils/ApplicationError')
+const sarahRoutes = require('./api/routes/sarah.routes')
 
 const app = express()
 
@@ -21,6 +22,7 @@ app.use((err, req, res, next) => {
 
 // ? Routes
 app.use('/api/todos', todosRoutes)
+app.use('/api/sarah', sarahRoutes)
 
 // ? Catch unknow URIs
 app.use((req, res, next) => {
